@@ -46,21 +46,23 @@ class Slider:
         self.counter = 0
     
     def resize(self, image):
-        basewidth = 700
+        basewidth = 800
         width, height = image.size
         if(width > height):
             basewidth = 1200
 
         wpercent = (basewidth / float(width))
         hsize = int((float(height) * float(wpercent)))
-        newImg = image.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+        newImg = image.resize((basewidth, hsize))
         return newImg
         
     def next_image(self):
         img = self.resize(Image.open(imagePaths[self.counter]))
+        #imgtk = ImageTk.PhotoImage(Image.open(imagePaths[self.counter]).resize((700, 1000)))
         imgtk = ImageTk.PhotoImage(img)
         
         #change panel image
+        self.panel.configure(background='black')
         self.panel.configure(image=imgtk)
         self.panel.image = imgtk
 

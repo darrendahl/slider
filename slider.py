@@ -26,7 +26,7 @@ print(imagePaths)
 
 #for testing purposes
 if(numImages <= 0):
-    imagePaths = ["./images/n1.jpg", "./images/n12.jpg", "./images/n9.jpg", "./images/n4.jpg", "./images/n10.jpg", "./images/n7.jpg", "./images/n8.jpg", "./images/n11.jpg", "./images/n2.jpg"]
+    imagePaths = ["./images/start.jpg"]
     numImages = len(imagePaths)
 
 
@@ -72,11 +72,8 @@ class Slider:
 
         self.root.after(5000, self.next_image)
 
-def exit(event):
-    import sys; sys.exit()
-
 app = Slider(root, panel)
 app.next_image()
-root.bind('<Return>', exit)
+root.bind('<Escape>', lambda e: (e.widget.withdraw(), e.widget.quit()))
 root.mainloop()
 

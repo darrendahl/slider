@@ -1,13 +1,18 @@
-import Tkinter as tk
+import sys
+if sys.version_info[0] == 2:  # the tkinter library changed it's name from Python 2 to 3.
+    import Tkinter
+    tkinter = Tkinter #I decided to use a library reference to avoid potential naming conflicts with people's programs.
+else:
+    import tkinter
+from PIL import Image, ImageTk
 import PIL
 from PIL import Image, ImageTk
 import os
 import time
 import fnmatch
-import sys
 
 #initialize tkinter
-root = tk.Tk()
+root = tkinter.Tk()
 root.overrideredirect(True)
 root.overrideredirect(False)
 root.attributes('-fullscreen',True)
@@ -36,7 +41,7 @@ if(numImages <= 0):
 
 #build first panel
 img = ImageTk.PhotoImage(Image.open(imagePaths[0]).resize((700,1000)))
-panel = tk.Label(root, image=img)
+panel = tkinter.Label(root, image=img)
 panel.pack(side = "bottom", fill = "both", expand = "yes")
 
 class Slider:
